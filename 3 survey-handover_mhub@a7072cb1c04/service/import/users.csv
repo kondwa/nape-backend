@@ -1,0 +1,7 @@
+id,active,date,firstName,lastName,salt,password,userName
+1,NULL,"2017-06-14 17:29:19","Olaf","Haasner","4d3d5d7066e3326354c57e0f10220d8b2441a1de5b1ef7f77046ceae162028c5","5FA8TCrvPcXabKLM9ga6BR4XVY4Fwrss","olaf.haasner@mainlevel.de"
+2,NULL,"2017-06-14 17:29:19","David","Haasner","c5ad4f57f79d609994c3d054e660a333a26e194e817ac83319aea692319b62ea","VSqFmEZZHN2JpCnpJnjb4dYQ4Tmq9DGV","david.haasner@mainlevel.de"
+3,NULL,"2017-06-14 17:29:19","Nicolas","Moser","7347645fc7a0b4c772b85f67ce066e0863bd236e6ff16c48d94ed342398cae8c","4VPk449QayQH95QXuZGVY6hHGTrK3U2V","nicolas.moser@prodyna.com"
+4,NULL,"2017-06-14 17:29:19","Jasmina","Ilic","ae6762fbcc06f6d7d3e5a567e8f88bd5bd836dad525843f03240b23ed69c569e","FG7zB6eBvV9uRQhaFPWwL64hPkTG5LuA","jasmina.ilic@prodyna.com"
+5,NULL,"2017-06-14 17:29:19","Milos","Nikolic","a78af82c64af8a4fc498d080857296a8cfa2c368c1a8d7ba790ed9eb65456318","hrZJn5aGRa2yQ9znPmHrgCzWMhvGTP82","milos.nikolic@prodyna.com"
+6,NULL,"2017-06-14 17:29:19","Chuck","Norris","a78af82c64af8a4fc498d080857296a8cfa2c368c1a8d7ba790ed9eb65456318","hrZJn5aGRa2yQ9znPmHrgCzWMhvGTP82","google@chucknorris.com"

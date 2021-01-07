@@ -1,0 +1,193 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-parent</artifactId>
+        <version>Dalston.SR5</version>
+    </parent>
+
+    <groupId>com.mainlevel.monitoring</groupId>
+    <artifactId>business_custom</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>${project.groupId}.${project.artifactId}</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+
+        <org.projectlombok.lombok.version>1.16.16</org.projectlombok.lombok.version>
+
+        <!-- module versions -->
+        <com.mainlevel.monitoring.common.version>1.0.0-SNAPSHOT</com.mainlevel.monitoring.common.version>
+        <com.mainlevel.monitoring.mail.version>1.0.0-SNAPSHOT</com.mainlevel.monitoring.mail.version>
+        <com.mainlevel.monitoring.authentication.version>1.0.0-SNAPSHOT</com.mainlevel.monitoring.authentication.version>
+        <com.mainlevel.monitoring.admin.version>1.0.0-SNAPSHOT</com.mainlevel.monitoring.admin.version>
+        <com.mainlevel.monitoring.survey.version>1.0.0-SNAPSHOT</com.mainlevel.monitoring.survey.version>
+
+        <!-- misc -->
+        <org.apache.commons.commons-lang3.version>3.5</org.apache.commons.commons-lang3.version>
+        <io.springfox.springfox-swagger2.version>2.6.1</io.springfox.springfox-swagger2.version>
+        <io.jsonwebtoken.jjwt.version>0.7.0</io.jsonwebtoken.jjwt.version>
+        <org.apache.commons.commons-io.version>1.3.2</org.apache.commons.commons-io.version>
+        <com.googlecode.wasp-java-html-sanitizer.version>r239</com.googlecode.wasp-java-html-sanitizer.version>
+        <net.logstash.logstash-logback-encoder.version>4.7</net.logstash.logstash-logback-encoder.version>
+		<org.apache.commons.commons-csv.version>1.4</org.apache.commons.commons-csv.version>
+    </properties>
+
+    <dependencies>
+        
+        <!-- modules -->
+        <dependency>
+            <groupId>com.mainlevel.monitoring</groupId>
+            <artifactId>common</artifactId>
+            <version>${com.mainlevel.monitoring.common.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.mainlevel.monitoring</groupId>
+            <artifactId>authentication-api</artifactId>
+            <version>${com.mainlevel.monitoring.authentication.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.mainlevel.monitoring</groupId>
+            <artifactId>admin-api</artifactId>
+            <version>${com.mainlevel.monitoring.admin.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.mainlevel.monitoring</groupId>
+            <artifactId>survey-api</artifactId>
+            <version>${com.mainlevel.monitoring.survey.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.mainlevel.monitoring</groupId>
+            <artifactId>mail-api</artifactId>
+            <version>${com.mainlevel.monitoring.mail.version}</version>
+        </dependency>
+
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- dev tools -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- misc -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${org.apache.commons.commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${org.projectlombok.lombok.version}</version><!--$NO-MVN-MAN-VER$-->
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${io.jsonwebtoken.jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${org.apache.commons.commons-io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.owasp-java-html-sanitizer</groupId>
+            <artifactId>owasp-java-html-sanitizer</artifactId>
+            <version>${com.googlecode.wasp-java-html-sanitizer.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${io.springfox.springfox-swagger2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${io.springfox.springfox-swagger2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${net.logstash.logstash-logback-encoder.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+			<version>${org.apache.commons.commons-csv.version}</version>
+        </dependency>
+        <!-- tests -->
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path-assert</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

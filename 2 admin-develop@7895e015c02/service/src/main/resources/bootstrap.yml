@@ -1,0 +1,8 @@
+logging:
+    config: 'classpath:logback-spring.xml'
+
+spring:
+    application.name: admin
+    cloud.config:
+              uri: ${param.spring.cloud.config.uri:http://localhost:9000/}
+              failFast: true

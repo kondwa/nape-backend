@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-parent</artifactId>
+        <version>Dalston.SR3</version>
+    </parent>
+
+    <groupId>com.mainlevel.monitoring</groupId>
+    <artifactId>mail</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>${project.groupId}.${project.artifactId}</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+
+        <org.projectlombok.lombok.version>1.16.16</org.projectlombok.lombok.version>
+
+        <!-- module versions -->
+        <com.mainlevel.monitoring.common.version>1.0.0-SNAPSHOT</com.mainlevel.monitoring.common.version>
+
+        <!-- misc -->
+        <org.apache.commons.commons-lang3.version>3.5</org.apache.commons.commons-lang3.version>
+        <io.springfox.springfox-swagger2.version>2.6.1</io.springfox.springfox-swagger2.version>
+        <io.jsonwebtoken.jjwt.version>0.7.0</io.jsonwebtoken.jjwt.version>
+        <com.googlecode.wasp-java-html-sanitizer.version>r239</com.googlecode.wasp-java-html-sanitizer.version>
+        <org.apache.commons.commons-io.version>1.3.2</org.apache.commons.commons-io.version>
+        <net.logstash.logstash-logback-encoder.version>4.7</net.logstash.logstash-logback-encoder.version>
+        <org.apache.commons.commons-csv>1.4</org.apache.commons.commons-csv>
+    </properties>
+
+	<modules>
+		<module>api</module>
+		<module>service</module>
+	</modules>
+
+</project>

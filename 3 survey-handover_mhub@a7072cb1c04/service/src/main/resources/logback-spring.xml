@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <springProperty name="SERVICE_NAME" source="spring.application.name"/>
+
+    <property name="LOG_PATH" value="logs"/>
+    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH}/${SERVICE_NAME}.log}"/> 
+    <property name="LOG_FILE_JSON" value="${LOG_FILE}.json"/>
+    
+    <property name="FILE_LOG_PATTERN" value="%d{ISO} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
+    <!-- Default Profile -->
+    <springProfile name="default">
+        <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+        <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+        </root>
+        <logger level="DEBUG" name="com.mainlevel.monitoring.config" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+        <logger level="INFO" name="org.hibernate" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+        <logger level="INFO" name="org.springframework" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+    </springProfile>
+
+    <!-- DEV Profile -->
+    <springProfile name="dev">
+        
+        <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+        <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+            <encoder>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+            </encoder>
+            <file>${LOG_FILE}</file>
+        </appender>
+        
+        <appender name="JSON" class="ch.qos.logback.core.FileAppender">
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+                <fieldNames>
+                    <timestamp>time</timestamp>
+                    <message>short_message</message>
+                    <thread>ident</thread>
+                    <levelValue>[ignore]</levelValue>
+                    <logger>event_category</logger>
+                    <version>[ignore]</version>
+                    <stackTrace>exception</stackTrace>
+                </fieldNames>
+                    
+                <customFields>
+                    {"host":"${HOSTNAME}.fra.de.prodyna.com", "service_name":"${SERVICE_NAME}", "span_parent":"${X-B3-ParentSpanId}", "span_export":"${X-Span-Export}", "pid":"${PID}"}
+                </customFields>
+
+                <includeContext>true</includeContext>
+            </encoder>
+            <file>${LOG_FILE_JSON}</file>
+        </appender>
+
+        <root level="INFO">
+            <appender-ref ref="FILE" />
+            <appender-ref ref="JSON" />
+        </root>
+        <logger level="DEBUG" name="com.mainlevel.monitoring.config" additivity="false">
+            <appender-ref ref="FILE" />
+            <appender-ref ref="JSON" />
+        </logger>
+        <logger level="INFO" name="org.hibernate" additivity="false">
+            <appender-ref ref="FILE" />
+            <appender-ref ref="JSON" />
+        </logger>
+        <logger level="INFO" name="org.springframework" additivity="false">
+            <appender-ref ref="FILE" />
+            <appender-ref ref="JSON" />
+        </logger>
+    </springProfile>
+
+    <!-- Production Profile -->
+    <springProfile name="prod">
+        
+        <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+        <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+            <encoder>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+            </encoder>
+            <file>${LOG_FILE}</file>
+        </appender>
+        
+        <appender name="JSON" class="ch.qos.logback.core.FileAppender">
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+                <fieldNames>
+                    <timestamp>time</timestamp>
+                    <message>short_message</message>
+                    <thread>ident</thread>
+                    <levelValue>[ignore]</levelValue>
+                    <logger>event_category</logger>
+                    <version>[ignore]</version>
+                    <stackTrace>exception</stackTrace>
+                </fieldNames>
+                    
+                <customFields>
+                    {"host":"${HOSTNAME}.fra.de.prodyna.com", "service_name":"${SERVICE_NAME}", "pid":"${PID}"}
+                </customFields>
+
+                <includeContext>true</includeContext>
+            </encoder>
+            <file>${LOG_FILE_JSON}</file>
+        </appender>
+
+        <root level="INFO">
+            <appender-ref ref="FILE" />
+            <appender-ref ref="JSON" />
+        </root>
+        <logger level="DEBUG" name="com.mainlevel.monitoring.config" additivity="false">
+            <appender-ref ref="FILE" />
+            <appender-ref ref="JSON" />
+        </logger>
+        <logger level="INFO" name="org.hibernate" additivity="false">
+            <appender-ref ref="FILE" />
+            <appender-ref ref="JSON" />
+        </logger>
+        <logger level="INFO" name="org.springframework" additivity="false">
+            <appender-ref ref="FILE" />
+            <appender-ref ref="JSON" />
+        </logger>
+    </springProfile>
+
+</configuration>

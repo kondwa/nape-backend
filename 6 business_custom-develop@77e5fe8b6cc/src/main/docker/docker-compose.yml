@@ -1,0 +1,38 @@
+version: '3'
+services:
+    config:
+        image: dockerhub.prodyna.com/mainlevel/config
+        volumes:
+            - ./logs:/logs
+            - ./config:/config   
+        expose:
+          - "9000"             
+        ports:
+          - "9000:9000"
+    eureka:
+        image: dockerhub.prodyna.com/mainlevel/eureka
+        volumes:
+            - ./logs:/logs   
+        expose:
+          - "9010"
+        ports:
+          - "9010:9010"
+        links:
+          - config
+        depends_on:
+          - config
+    authentication:
+        image: dockerhub.prodyna.com/mainlevel/authentication-service
+        volumes:
+            - ./logs:/logs   
+        expose:
+          - "9030"
+        ports:
+          - "9030:9030"
+        links:
+          - config
+          - eureka
+        depends_on:
+          - config
+          - eureka
+        
